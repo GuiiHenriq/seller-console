@@ -6,22 +6,7 @@ import { LeadsFilters } from './components/leads/LeadsFilters';
 import { LeadsTable } from './components/leads/LeadsTable';
 import { LeadDetail } from './components/leads/LeadDetail';
 import { OpportunitiesTable } from './components/opportunities/OpportunitiesTable';
-import {
-  ChartBarIcon,
-  HomeIcon,
-  UsersIcon,
-  Bars3Icon,
-} from '@heroicons/react/24/outline';
-
-const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Leads', href: '#', icon: UsersIcon, current: false },
-  { name: 'Opportunities', href: '#', icon: ChartBarIcon, current: false },
-];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
+import { UsersIcon } from '@heroicons/react/24/outline';
 
 function App() {
   const {
@@ -39,7 +24,6 @@ function App() {
   } = useLeadsManager();
 
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     fetchLeads();
@@ -71,7 +55,7 @@ function App() {
           <main className="flex-1 relative overflow-y-auto focus:outline-none">
             <div className="py-6">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-                <div className="rounded-lg bg-white shadow">
+                <div className="space-y-0">
                   <LeadsFilters
                     onSearch={(search) => updateFilters({ search })}
                     onStatusFilter={(status) => updateFilters({ status })}
@@ -87,16 +71,31 @@ function App() {
                   />
 
                   {loading && leads.length === 0 ? (
-                    <div className="p-8 text-center">
-                      <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
-                      <p className="mt-2 text-sm text-gray-600">Loading leads...</p>
+                    <div className="bg-white rounded-b-2xl shadow-lg border border-gray-100 p-12 text-center">
+                      <div className="flex flex-col items-center space-y-4">
+                        <div className="relative">
+                          <div className="w-12 h-12 border-4 border-blue-200 rounded-full animate-spin"></div>
+                          <div className="absolute top-0 left-0 w-12 h-12 border-4 border-transparent border-t-blue-600 rounded-full animate-spin"></div>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-900">Loading leads...</h3>
+                          <p className="text-sm text-gray-500 mt-1">Please wait while we fetch the data</p>
+                        </div>
+                      </div>
                     </div>
                   ) : !loading && leads.length === 0 ? (
-                    <div className="text-center py-12">
-                      <h3 className="mt-2 text-sm font-semibold text-gray-900">No leads found</h3>
-                      <p className="mt-1 text-sm text-gray-500">
-                        Try adjusting your search or filter criteria
-                      </p>
+                    <div className="bg-white rounded-b-2xl shadow-lg border border-gray-100 p-12 text-center">
+                      <div className="flex flex-col items-center space-y-4">
+                        <div className="p-4 bg-gray-100 rounded-full">
+                          <UsersIcon className="h-8 w-8 text-gray-400" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-900">No leads found</h3>
+                          <p className="text-sm text-gray-500 mt-1">
+                            Try adjusting your search or filter criteria
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   ) : (
                     <LeadsTable
