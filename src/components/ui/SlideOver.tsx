@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -56,10 +56,8 @@ export const SlideOver = ({ open, onClose, title, children }: SlideOverProps) =>
                         </div>
                       </div>
                     </div>
-                    
-                    <div className="relative flex-1 px-6 py-6 bg-white">
-                      {children}
-                    </div>
+
+                    <div className="relative flex-1 px-6 py-6 bg-white">{children}</div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

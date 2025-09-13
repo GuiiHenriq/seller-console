@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { MagnifyingGlassIcon, FunnelIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+import {
+  MagnifyingGlassIcon,
+  FunnelIcon,
+  AdjustmentsHorizontalIcon,
+} from '@heroicons/react/24/outline';
 import { Lead } from '../../types';
 import { Button } from '../ui/Button';
 
@@ -70,7 +74,7 @@ export const LeadsFilters = ({
                 </span>
               )}
             </Button>
-            
+
             <div className="relative">
               <select
                 className="w-full appearance-none bg-white border border-gray-200 rounded-xl px-4 py-3 pr-10 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 cursor-pointer"
@@ -125,16 +129,24 @@ export const LeadsFilters = ({
                       }}
                     />
                     <div className="flex items-center space-x-3">
-                      <div className={`w-3 h-3 rounded-full ${
-                        isSelected 
-                          ? status.color === 'blue' ? 'bg-blue-500' : 
-                            status.color === 'amber' ? 'bg-amber-500' :
-                            status.color === 'emerald' ? 'bg-emerald-500' : 'bg-red-500'
-                          : 'bg-gray-300'
-                      }`}></div>
-                      <span className={`text-sm font-medium ${
-                        isSelected ? 'text-current' : 'text-gray-700'
-                      }`}>
+                      <div
+                        className={`w-3 h-3 rounded-full ${
+                          isSelected
+                            ? status.color === 'blue'
+                              ? 'bg-blue-500'
+                              : status.color === 'amber'
+                                ? 'bg-amber-500'
+                                : status.color === 'emerald'
+                                  ? 'bg-emerald-500'
+                                  : 'bg-red-500'
+                            : 'bg-gray-300'
+                        }`}
+                      ></div>
+                      <span
+                        className={`text-sm font-medium ${
+                          isSelected ? 'text-current' : 'text-gray-700'
+                        }`}
+                      >
                         {status.label}
                       </span>
                     </div>

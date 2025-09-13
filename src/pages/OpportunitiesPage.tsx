@@ -4,12 +4,7 @@ import { OpportunitiesTable } from '../components/opportunities/OpportunitiesTab
 import { ChartBarIcon } from '@heroicons/react/24/outline';
 
 export function OpportunitiesPage() {
-  const {
-    opportunities,
-    loading,
-    error,
-    fetchLeads,
-  } = useLeadsManager();
+  const { opportunities, loading, error, fetchLeads } = useLeadsManager();
 
   useEffect(() => {
     fetchLeads();

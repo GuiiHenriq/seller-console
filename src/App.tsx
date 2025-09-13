@@ -12,7 +12,7 @@ function App() {
     <Router>
       <div>
         <Toaster position="top-right" />
-        
+
         {/* Mobile Layout: Menu on top, content below */}
         {isMobile ? (
           <div className="min-h-screen bg-gray-100">

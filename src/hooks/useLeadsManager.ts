@@ -31,7 +31,7 @@ export const useLeadsManager = () => {
       setAllLeads(data);
       setPage(1);
       setError(null);
-    } catch (err) {
+    } catch {
       setError('Failed to load leads');
     } finally {
       setLoading(false);
@@ -68,43 +68,49 @@ export const useLeadsManager = () => {
 
   const loadMoreLeads = useCallback(() => {
     if (!loading) {
-      setPage(prev => prev + 1);
+      setPage((prev) => prev + 1);
     }
   }, [loading]);
 
-  const updateLead = useCallback(async (leadId: string, updates: Partial<Lead>) => {
-    try {
-      const updatedLeads = allLeads.map((lead) =>
-        lead.id === leadId ? { ...lead, ...updates } : lead
-      );
-      await simulateApiCall(updatedLeads);
-      setAllLeads(updatedLeads);
-      return true;
-    } catch (err) {
-      throw new Error('Failed to update lead');
-    }
-  }, [allLeads]);
+  const updateLead = useCallback(
+    async (leadId: string, updates: Partial<Lead>) => {
+      try {
+        const updatedLeads = allLeads.map((lead) =>
+          lead.id === leadId ? { ...lead, ...updates } : lead,
+        );
+        await simulateApiCall(updatedLeads);
+        setAllLeads(updatedLeads);
+        return true;
+      } catch {
+        throw new Error('Failed to update lead');
+      }
+    },
+    [allLeads],
+  );
 
-  const convertToOpportunity = useCallback(async (lead: Lead, amount?: number) => {
-    const newOpportunity: Opportunity = {
-      id: `opp-${Date.now()}`,
-      name: `${lead.company} Opportunity`,
-      stage: 'discovery',
-      amount,
-      accountName: lead.company,
-      createdAt: new Date().toISOString(),
-      leadId: lead.id,
-    };
+  const convertToOpportunity = useCallback(
+    async (lead: Lead, amount?: number) => {
+      const newOpportunity: Opportunity = {
+        id: `opp-${Date.now()}`,
+        name: `${lead.company} Opportunity`,
+        stage: 'discovery',
+        amount,
+        accountName: lead.company,
+        createdAt: new Date().toISOString(),
+        leadId: lead.id,
+      };
 
-    try {
-      await simulateApiCall(newOpportunity);
-      setOpportunities((prev) => [...prev, newOpportunity]);
-      await updateLead(lead.id, { status: 'qualified' });
-      return true;
-    } catch (err) {
-      throw new Error('Failed to convert lead to opportunity');
-    }
-  }, [updateLead]);
+      try {
+        await simulateApiCall(newOpportunity);
+        setOpportunities((prev) => [...prev, newOpportunity]);
+        await updateLead(lead.id, { status: 'qualified' });
+        return true;
+      } catch {
+        throw new Error('Failed to convert lead to opportunity');
+      }
+    },
+    [updateLead],
+  );
 
   const updateFilters = useCallback((updates: Partial<FilterState>) => {
     setFilterState((prev) => {
@@ -130,6 +136,6 @@ export const useLeadsManager = () => {
     updateFilters,
     loadMoreLeads,
     hasMore,
-    total: filteredLeads.length
+    total: filteredLeads.length,
   };
 };

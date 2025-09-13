@@ -1,10 +1,10 @@
 import { Opportunity } from '../../types';
-import { 
-  BuildingOfficeIcon, 
-  CurrencyDollarIcon, 
-  CalendarIcon, 
+import {
+  BuildingOfficeIcon,
+  CurrencyDollarIcon,
+  CalendarIcon,
   ChartBarIcon,
-  UserIcon
+  UserIcon,
 } from '@heroicons/react/24/outline';
 
 type OpportunitiesTableProps = {
@@ -15,10 +15,10 @@ type OpportunitiesTableProps = {
   loading?: boolean;
 };
 
-export const OpportunitiesTable = ({ 
-  opportunities, 
+export const OpportunitiesTable = ({
+  opportunities,
   onOpportunityClick,
-  hasMore = false
+  hasMore = false,
 }: OpportunitiesTableProps) => {
   const formatCurrency = (amount?: number) => {
     if (!amount) return '-';
@@ -38,32 +38,32 @@ export const OpportunitiesTable = ({
         bg: 'bg-blue-50',
         text: 'text-blue-700',
         border: 'border-blue-200',
-        dot: 'bg-blue-500'
+        dot: 'bg-blue-500',
       },
       proposal: {
         bg: 'bg-amber-50',
         text: 'text-amber-700',
         border: 'border-amber-200',
-        dot: 'bg-amber-500'
+        dot: 'bg-amber-500',
       },
       negotiation: {
         bg: 'bg-purple-50',
         text: 'text-purple-700',
         border: 'border-purple-200',
-        dot: 'bg-purple-500'
+        dot: 'bg-purple-500',
       },
       closed_won: {
         bg: 'bg-emerald-50',
         text: 'text-emerald-700',
         border: 'border-emerald-200',
-        dot: 'bg-emerald-500'
+        dot: 'bg-emerald-500',
       },
       closed_lost: {
         bg: 'bg-red-50',
         text: 'text-red-700',
         border: 'border-red-200',
-        dot: 'bg-red-500'
-      }
+        dot: 'bg-red-500',
+      },
     };
     return configs[stage];
   };
@@ -157,7 +157,10 @@ export const OpportunitiesTable = ({
                       className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold border ${stageConfig.bg} ${stageConfig.text} ${stageConfig.border}`}
                     >
                       <span className={`w-2 h-2 rounded-full ${stageConfig.dot} mr-2`}></span>
-                      {opportunity.stage.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                      {opportunity.stage
+                        .split('_')
+                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ')}
                     </span>
                   </td>
                   <td className="px-6 py-5">
@@ -197,7 +200,9 @@ export const OpportunitiesTable = ({
                         <h3 className="text-base font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
                           {opportunity.name}
                         </h3>
-                        <p className="text-sm text-gray-600 font-medium mt-1">{opportunity.accountName}</p>
+                        <p className="text-sm text-gray-600 font-medium mt-1">
+                          {opportunity.accountName}
+                        </p>
                         <p className="text-sm font-semibold text-gray-900 mt-1">
                           {formatCurrency(opportunity.amount)}
                         </p>
@@ -206,16 +211,19 @@ export const OpportunitiesTable = ({
                         <span
                           className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border whitespace-nowrap ${stageConfig.bg} ${stageConfig.text} ${stageConfig.border}`}
                         >
-                          <span className={`w-1.5 h-1.5 rounded-full ${stageConfig.dot} mr-1.5`}></span>
-                          {opportunity.stage.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full ${stageConfig.dot} mr-1.5`}
+                          ></span>
+                          {opportunity.stage
+                            .split('_')
+                            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                            .join(' ')}
                         </span>
                       </div>
                     </div>
-                    
+
                     <div className="mt-3 flex items-center justify-between">
-                      <p className="text-sm text-gray-500">
-                        {formatDate(opportunity.createdAt)}
-                      </p>
+                      <p className="text-sm text-gray-500">{formatDate(opportunity.createdAt)}</p>
                     </div>
                   </div>
                 </div>

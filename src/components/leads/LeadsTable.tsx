@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { Lead } from '../../types';
-import { UserIcon, BuildingOfficeIcon, EnvelopeIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import {
+  UserIcon,
+  BuildingOfficeIcon,
+  EnvelopeIcon,
+  ChartBarIcon,
+} from '@heroicons/react/24/outline';
 
 type LeadsTableProps = {
   leads: Lead[];
@@ -10,12 +15,12 @@ type LeadsTableProps = {
   loading?: boolean;
 };
 
-export const LeadsTable = ({ 
-  leads, 
-  onLeadClick, 
+export const LeadsTable = ({
+  leads,
+  onLeadClick,
   hasMore,
   onLoadMore,
-  loading = false
+  loading = false,
 }: LeadsTableProps) => {
   const loaderRef = useRef<HTMLDivElement>(null);
 
@@ -31,7 +36,7 @@ export const LeadsTable = ({
         root: null,
         rootMargin: '20px',
         threshold: 0.1,
-      }
+      },
     );
 
     if (loaderRef.current) {
@@ -51,26 +56,26 @@ export const LeadsTable = ({
         bg: 'bg-blue-50',
         text: 'text-blue-700',
         border: 'border-blue-200',
-        dot: 'bg-blue-500'
+        dot: 'bg-blue-500',
       },
       contacted: {
         bg: 'bg-amber-50',
         text: 'text-amber-700',
         border: 'border-amber-200',
-        dot: 'bg-amber-500'
+        dot: 'bg-amber-500',
       },
       qualified: {
         bg: 'bg-emerald-50',
         text: 'text-emerald-700',
         border: 'border-emerald-200',
-        dot: 'bg-emerald-500'
+        dot: 'bg-emerald-500',
       },
       unqualified: {
         bg: 'bg-red-50',
         text: 'text-red-700',
         border: 'border-red-200',
-        dot: 'bg-red-500'
-      }
+        dot: 'bg-red-500',
+      },
     };
     return configs[status];
   };
@@ -164,7 +169,7 @@ export const LeadsTable = ({
                   <td className="px-6 py-5">
                     <div className="flex items-center space-x-2">
                       <div className="flex-1 bg-gray-200 rounded-full h-2">
-                        <div 
+                        <div
                           className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full transition-all duration-300"
                           style={{ width: `${(lead.score / 100) * 100}%` }}
                         ></div>
@@ -218,19 +223,21 @@ export const LeadsTable = ({
                         <span
                           className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border whitespace-nowrap ${statusConfig.bg} ${statusConfig.text} ${statusConfig.border}`}
                         >
-                          <span className={`w-1.5 h-1.5 rounded-full ${statusConfig.dot} mr-1.5`}></span>
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full ${statusConfig.dot} mr-1.5`}
+                          ></span>
                           {lead.status.charAt(0).toUpperCase() + lead.status.slice(1)}
                         </span>
                       </div>
                     </div>
-                    
+
                     <div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                       <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 w-fit">
                         {lead.source}
                       </span>
                       <div className="flex items-center space-x-2">
                         <div className="flex-1 sm:flex-none sm:w-16 bg-gray-200 rounded-full h-1.5">
-                          <div 
+                          <div
                             className="bg-gradient-to-r from-blue-500 to-indigo-600 h-1.5 rounded-full transition-all duration-300"
                             style={{ width: `${(lead.score / 100) * 100}%` }}
                           ></div>
@@ -249,10 +256,7 @@ export const LeadsTable = ({
       </div>
 
       {hasMore && (
-        <div
-          ref={loaderRef}
-          className="flex items-center justify-center py-8 bg-gray-50/50"
-        >
+        <div ref={loaderRef} className="flex items-center justify-center py-8 bg-gray-50/50">
           <div className="flex items-center space-x-3">
             <div className="relative">
               <div className="w-8 h-8 border-4 border-blue-200 rounded-full animate-spin"></div>

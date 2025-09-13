@@ -1,10 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useMobile } from '../../hooks/useMobile';
-import { 
-  UserGroupIcon, 
-  ChartBarIcon,
-  BuildingOfficeIcon
-} from '@heroicons/react/24/outline';
+import { UserGroupIcon, ChartBarIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
 import { clsx } from 'clsx';
 
 const navigation = [
@@ -15,7 +11,6 @@ const navigation = [
 export function Sidebar() {
   const location = useLocation();
   const isMobile = useMobile();
-
 
   // Desktop navigation
   const DesktopSidebar = () => (
@@ -36,13 +31,13 @@ export function Sidebar() {
                 'group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors',
                 isActive
                   ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-600'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
               )}
             >
               <item.icon
                 className={clsx(
                   'mr-3 h-5 w-5 flex-shrink-0',
-                  isActive ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'
+                  isActive ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500',
                 )}
                 aria-hidden="true"
               />
@@ -62,7 +57,7 @@ export function Sidebar() {
           <BuildingOfficeIcon className="h-6 w-6 text-blue-600" />
           <span className="ml-2 text-lg font-semibold text-gray-900">Seller Console</span>
         </div>
-        
+
         <nav className="flex space-x-1">
           {navigation.map((item) => {
             const isActive = location.pathname === item.href;
@@ -74,13 +69,13 @@ export function Sidebar() {
                   'flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors',
                   isActive
                     ? 'bg-blue-50 text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                 )}
               >
                 <item.icon
                   className={clsx(
                     'mr-2 h-4 w-4 flex-shrink-0',
-                    isActive ? 'text-blue-500' : 'text-gray-400'
+                    isActive ? 'text-blue-500' : 'text-gray-400',
                   )}
                   aria-hidden="true"
                 />
@@ -92,7 +87,6 @@ export function Sidebar() {
       </div>
     </div>
   );
-
 
   if (isMobile) {
     return <MobileNavigation />;

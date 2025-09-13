@@ -1,25 +1,75 @@
 import { Lead, Opportunity } from '../types';
 
 const firstNames = [
-  'John', 'Sarah', 'Michael', 'Emma', 'David', 'Lisa', 'Robert', 'Jennifer', 'William', 'Patricia',
-  'James', 'Elizabeth', 'Richard', 'Linda', 'Thomas', 'Barbara', 'Charles', 'Susan', 'Joseph', 'Margaret'
+  'John',
+  'Sarah',
+  'Michael',
+  'Emma',
+  'David',
+  'Lisa',
+  'Robert',
+  'Jennifer',
+  'William',
+  'Patricia',
+  'James',
+  'Elizabeth',
+  'Richard',
+  'Linda',
+  'Thomas',
+  'Barbara',
+  'Charles',
+  'Susan',
+  'Joseph',
+  'Margaret',
 ];
 
 const lastNames = [
-  'Smith', 'Johnson', 'Brown', 'Davis', 'Wilson', 'Anderson', 'Taylor', 'Martinez', 'Lee', 'White',
-  'Harris', 'Clark', 'Lewis', 'Walker', 'Hall', 'Young', 'King', 'Wright', 'Lopez', 'Hill'
+  'Smith',
+  'Johnson',
+  'Brown',
+  'Davis',
+  'Wilson',
+  'Anderson',
+  'Taylor',
+  'Martinez',
+  'Lee',
+  'White',
+  'Harris',
+  'Clark',
+  'Lewis',
+  'Walker',
+  'Hall',
+  'Young',
+  'King',
+  'Wright',
+  'Lopez',
+  'Hill',
 ];
 
 const companies = [
-  'Tech Solutions', 'Digital Systems', 'Global Innovations', 'Smart Analytics', 'Cloud Services',
-  'Data Technologies', 'Security Systems', 'AI Solutions', 'Software Corp', 'Network Systems',
-  'Web Platforms', 'Mobile Tech', 'Enterprise Solutions', 'Digital Marketing', 'IT Consulting',
-  'DevOps Solutions', 'Cloud Computing', 'Cyber Security', 'Big Data Corp', 'IoT Systems'
+  'Tech Solutions',
+  'Digital Systems',
+  'Global Innovations',
+  'Smart Analytics',
+  'Cloud Services',
+  'Data Technologies',
+  'Security Systems',
+  'AI Solutions',
+  'Software Corp',
+  'Network Systems',
+  'Web Platforms',
+  'Mobile Tech',
+  'Enterprise Solutions',
+  'Digital Marketing',
+  'IT Consulting',
+  'DevOps Solutions',
+  'Cloud Computing',
+  'Cyber Security',
+  'Big Data Corp',
+  'IoT Systems',
 ];
 
-const domains = [
-  'com', 'tech', 'io', 'co', 'net'
-];
+const domains = ['com', 'tech', 'io', 'co', 'net'];
 
 const sources = ['Website', 'LinkedIn', 'Referral', 'Conference', 'Cold Call'] as const;
 const statuses = ['new', 'contacted', 'qualified', 'unqualified'] as const;

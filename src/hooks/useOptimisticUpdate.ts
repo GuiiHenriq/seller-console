@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 export const useOptimisticUpdate = <T>(
   updateFn: (data: T) => Promise<boolean>,
-  rollbackFn: () => void
+  rollbackFn: () => void,
 ) => {
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -22,7 +22,7 @@ export const useOptimisticUpdate = <T>(
         setIsUpdating(false);
       }
     },
-    [updateFn, rollbackFn]
+    [updateFn, rollbackFn],
   );
 
   return {

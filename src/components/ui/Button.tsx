@@ -1,3 +1,4 @@
+import React from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -29,8 +30,8 @@ export const Button = ({
             'h-10 px-4 text-base': size === 'md',
             'h-11 px-8 text-lg': size === 'lg',
           },
-          className
-        )
+          className,
+        ),
       )}
       disabled={isLoading || disabled}
       {...props}
